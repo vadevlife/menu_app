@@ -6,15 +6,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante - Cão Quente</title>
     <link rel="shortcut icon" href="favico.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="all.css">
 
 </head>
 
   <style>
+
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
       ul li{
           list-style: none;
       }
+      #launcher {
+            background-image: url(full.png);
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-wrap: wrap;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        button#CartToggle:before {
+            content: "";
+            background-image: url("vetor.png" );
+            width: 70px;
+            height: 110px;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+
+        #launcher input{
+            width: 100%;
+            margin: 75px 20px;
+            position: relative;
+            top: 34%;
+            height: 45px;
+            border: 0;
+            border-radius: 30px;
+            padding: 0 15px;
+            opacity: 0.9;
+            text-transform:uppercase;
+            font-weight: 700;
+            
+
+        }
+        #launcher input:focus-visible {
+            border: 0;
+            box-shadow: inherit;
+            outline-color: #ff5702;
+        }
+        :-webkit-input-placeholder { /* Edge */
+            color:#333;
+          font-family: 'Roboto Condensed', sans-serif;
+          font-size: 14px;
+
+            }
+
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color:#333;
+          font-family: 'Roboto Condensed', sans-serif;
+          font-size: 14px;
+
+
+            }
+
+            ::placeholder {
+            color:#333;
+          font-family: 'Roboto Condensed', sans-serif;
+          font-size: 14px;
+
+
+            }
+
+        #launcher button{
+
+            background: transparent;
+            border: 2px solid white;
+            width: 200px;
+            color: white;
+            border-radius: 30px;
+            height: 40px;
+            margin: 0 auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
       body {
           max-width: 500px;
           margin: 0 auto;
@@ -28,11 +115,23 @@
 
       }
       
-      nav[view="false"],#CartMenu[view="false"] {
-          display: none;
+      nav[view="false"] {
+        left: -100%;
+        transition: .3s;
       }
-      nav[view="true"],#CartMenu[view="true"] {
-          display: block;
+      nav[view="true"]  {
+        left: 0%;
+         transition: .3s;
+      }
+      #CartMenu[view="false"] {
+        left: -100%;
+        transition: .3s;
+
+          }
+      #CartMenu[view="true"] {
+         left: 0%;
+         transition: .3s;
+
       }
       nav,div#CartMenu{
           background: #eee;
@@ -55,7 +154,7 @@
           color: #737373;
       }
       main{
-          margin: 80px auto;
+          margin:145px auto 15px;
       }
       .product{
           display: flex;
@@ -69,6 +168,20 @@
 
          
       }
+      #products h3:after {
+        border-bottom: 2px solid #ff5c00;
+        display: block;
+        content: "";
+        position: relative;
+        top: 7px;
+        width: 54px;
+        }
+        .itens {
+            margin: 30px auto;
+            background: #f3f3f3;
+            padding: 15px;
+            border-radius: 20px;
+        }
     
       .product[view="false"]{
           left: 0px;
@@ -77,7 +190,7 @@
           left: -80px;
       }
       .product button {
-      background: #FF3D00;
+      background: #ff5c00;
       height: 100%;
       border: 0;
       width: 100%;
@@ -131,14 +244,29 @@
     font-weight: 900;
     color: #FF5C00;
     }
-  </style>
-<body style="padding: 10px 10px ;overflow-y: auto; ">
 
-    <header style="display: flex;align-items: center;justify-content: space-between;">
+    /* swipr */
+    .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after  {
+    content: 'next';
+    width: 2px !important;
+    font-size: 20px !important;
+    color: #f90;
+    }
+    .swiper-button-prev, .swiper-rtl .swiper-button-next {
+    display: none;
+    }
+    .swiper-slide {
+    display: flex;
+    justify-content: center;
+    }
+    
+  </style>
+<body style="padding: 10px 10px ;overflow-y: auto; "> 
+    <header style="display: flex;align-items: center;justify-content: space-between;margin: 5px auto 0;">
         <div>
-            <button style="background:transparent;border:0;" onclick="toggle('nav')"><i class="fa-solid fa-bars"></i></button> 
+            <button style="background:transparent;border:0;" onclick="toggle('CartMenu')"><i class="fa-solid fa-bars"></i></button> 
             <nav id="nav" view="false">
-                <button style="float:right;margin:10px;cursor:pointer;background:transparent;border:0;" onclick="Menu()">x</button>
+                <button style="float:right;margin:10px;cursor:pointer;background:transparent;border:0;" onclick="toggle('CartMenu')">x</button>
                 <ul>
                     <li>Hot Dogs</li>
                     <li>Hambúrguers</li>
@@ -146,55 +274,136 @@
                     <li>Bebidas</li>
                 </ul>
             </nav>
-       
+            <span style="
+            position: relative;
+            left: 29%;
+            text-transform: uppercase;
+            font-weight: 200;
+            ">      
+            Restaurante Kão Kente
+            </span>
         </div>
 
         <div id="Cart"  class="cart">
             <button id="CartToggle" style="background:transparent;border:0; z-index: 999;right: 5px;" onclick="toggle('CartMenu')">
-                <i class="fa-solid fa-cart-arrow-down"></i>
+                <i      style=" color: white;font-size: 15px;" class="fa-solid fa-cart-arrow-down"></i>
             </button>
             <div id="CartMenu" view="false"> 
                 <button  style="background:transparent; float:right;z-index: 999;right: 5px;margin: 20px;" onclick="toggle('CartMenu')">
                     x
-                </button> 
-
+                </button>  
                 <div class="msg">
                 Nenhuma produto na Cesta 
                </div>   
             </div> 
         </div>
        
-        
-         <div class="search" style="position: absolute;top: 30px;width: 80%;left: 0;margin: 0 7%;">
-             <input style="width: 100%;margin: 10px 0px;border: 1px solid #bfbdbd;padding: 10px 10px;border-radius: 25px;" type="text" placeholder="Buscar itens..">
-             <i style="position: absolute;right: 0;top: 21px; opacity: 0.3; cursor: pointer;" class="fa-solid fa-magnifying-glass"></i>
+      
+         <div class="search" style="position: absolute;top: 30px;width: 80%;left: 0;margin: 15px 7%;">
+            <div style="
+            margin: 3px auto;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            padding: 0px 14px;
+            " id="welcome">
+
+            <img src="mini-pluto.png" alt="">
+
+            </div> 
+                <input style="width: 100%;margin: 70px 0px;border: 0px solid #bfbdbd;padding: 13px 15px;border-radius: 25px;background: #F5F5F5;" type="text" placeholder="Buscar itens..">
+                <i style="position: absolute;right: -10px;top: 82px; opacity: 0.3; cursor: pointer;" class="fa-solid fa-magnifying-glass"></i>
          </div>
+         
     </header>
-
+    
     <main > 
-     
+      <div id="launcher"></div>
+         
+      <div id="slider">
+        <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+            <div class="swiper-wrapper" id="swiper-wrapper-437910353b76b2ec8" aria-live="polite">
+              <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 377px;">
+                <img src="iPhone 8 Plus - 1 (1).png" alt="">
+            </div>
+              <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 377px;">
+                <img src="iPhone 8 Plus - 1 (2).png" alt="">
+            </div>
+              
+            </div>
+             <div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal" hidden><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">9</span></div>
+          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>  
 
+      </div>
       <div class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
+        <h2 class="title" style="
+        text-transform: uppercase;
+        display: block; 
+        margin-bottom: 5px;
+
+    ">
+            Cardápio
+        </h2>    
+        <p style="margin: 5px auto 40px;">Faça seu pedido! </p>
         <div id="products"></div> 
        </div> 
 
     </main>
 
-    <footer style="display: flex;justify-content: center;opacity: 0.6;text-transform: uppercase;align-items: center;padding: 7px;">
+    <footer style="display: flex;justify-content: center;opacity: 0.6;text-transform: uppercase;align-items: center;padding: 7px;flex-direction: column;">
         Restaurante Kão Kente
         <span><h6>Desenvolvido por : Digital Harmony</h6></span>
     </footer>
 </body>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+    //   navigation: {
+    //     nextEl: ".swiper-button-next",
+    //     prevEl: ".swiper-button-prev",
+    //   },
+    });
+  </script>
 <script src="all.js"></script>
 <script src="products.js"></script>
 <script src="teste.js"></script>
 <script> 
  
+ initApp = () => {
+    var launcherID = document.getElementById('launcher')
+    
+    var input ="<input id=inputName type='text' placeholder='Digite seu nome aqui' required >"
+    var button ="<button onclick=getName()  type='button' placeholder='Digite seu nome aqui' required >Iniciar</button>" 
+    launcherID.innerHTML=input+button
 
+    getName = () => {
+        var userName=document.getElementById('inputName').value
+        
+        if(userName.length>=2){
+            Products(userName) 
+            
+            setTimeout( 
+                launcherID.style.cssText="display:none;"
+            , 1000);
+        }else{
+            alert('Para começar preencha o campo')
+        }
+    }
+  
+}
+ initApp()
 
-Products = () => { 
+Products = (userName) => { 
+   
+
   var container=document.getElementById('products')
-
+  var welcome=document.getElementById('welcome')
+  welcome.innerHTML+="<p style='  margin-top: 15px;  font-size: 16px;  color: black;  padding: 0 5  px;   display: block;   margin-left: auto;  margin-right: auto;'> Olá, <strong style='font-weight: 700;color: #ff5c00; letter-spacing: 1px;'>"+userName+"</strong> faça seu pedido.</p>"
 
 
   allProds.map((el)=>{ 
@@ -220,7 +429,7 @@ Products = () => {
                         <div style="position: relative;left: -10px; ">   
                             <img style="width: 100px;margin-left: 5px;" src="`+itemProdImg+`" alt="">
                         </div>
-                        <div style="position: absolute;right: -80px;width: 80px;height: 100%;">  
+                        <div style="position: absolute;right: -106px;width: 96px;height: 100%;">  
                             <button key=`+itemProdId+` class="cartBtn">Comprar</button> 
                         </div>  
                 </div> 
@@ -228,46 +437,89 @@ Products = () => {
         `;
         }
     }) 
-} 
-Products(); 
- 
 
-var btn=document.querySelectorAll('.cartBtn')
+    var btn=document.querySelectorAll('.cartBtn')
 
  for (var i = 0; i < btn.length; i++) { 
     btn[i].addEventListener('click',function(){
       let key=this.getAttribute('key')
       listProd[key].quantidade++ 
-      Cart() 
+      Cart(true) 
     }) 
     
   }
+} 
 
-Cart = () =>{ 
-  var containerCart=document.getElementById('CartMenu') 
+ 
 
-  console.log("this"+containerCart.childNodes[1] )
+
+
+  
+
+Cart = (status) =>{ 
+    containerCart=document.getElementById('CartMenu') 
+
+//   console.log("this"+containerCart.childNodes[1] )
   containerCart.innerHTML=` <button style="background:transparent; float:right;z-index: 999;right: 5px;margin: 20px;" onclick="toggle('CartMenu')">  x </button>`;
 
   listProd.map((el)=>{  
     if(el.quantidade > 0){ 
         
-        containerCart.innerHTML+=`
+          n= el.name  
+        containerCart.innerHTML+=`  
             <div class="itemProd">
-                <div class="nameProd">`+el.name+` (`+el.quantidade+` Un.)</div> 
+                <div class="nameProd">`+el.name+` (`+el.quantidade+` Un.),(`+el.price+` Un.)</div> 
                 <p>`+el.description+`</p>
                 <span>`+el.price+`</span>
-                <button style="float:right; " onclick="removeProd(this)">  Remover </button>
+                <button  key=`+el.id+` style="float:right; " onclick="removeProd(this)">  Remover </button>
             </div>  
         `;
         // toggle('CartMenu')
-        alert('Produto adicionado ')
+        
     }  
+   
   })
-  containerCart.innerHTML+=`    <button style="float: inherit;display: block;margin: 0 auto;position: absolute;bottom: 25px;left: 40%; " onclick="removeProd(this)">  Enviar Pedido </button>
+  if(status==true){ 
+        alert('Produto adicionado ')
+    }else{
+        alert('Produto removido  ')
+
+    } 
+    // console.log( n )
+
+    containerCart.innerHTML+=`<button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #FF5C00;bottom: 25px;width: 230px;height: 45px;background: #FF5C00;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>
             
         `
 }
+
+enviarPedido=()=>{ 
+
+    var cesta=document.querySelectorAll("div#CartMenu .itemProd")
+   
+    // console.log(cesta )
+
+    for (let index = 0; index < cesta.length; index++) {
+        const element = cesta[index];
+        name+=element.childNodes[1].innerHTML       
+             
+
+        msg="Meu pedido é:"+name+",  "
+    // console.log(element.childNodes[1] )
+    // console.log(element.childNodes[5] )
+        
+    }
+    console.log(  msg  )
+    url="https://wa.me/+5511983572332?text="+msg+""
+    location.href = url
+
+}
+
+removeProd=(prod)=>{
+ 
+    let key=prod.getAttribute('key')
+    listProd[key].quantidade--
+    Cart(false)
+ }
 
 toggle=(id)=>{ 
 
@@ -278,7 +530,9 @@ toggle=(id)=>{
     if(thisID.getAttribute("view")=="false") {
        
       if(thisID.getAttribute("id")=="CartMenu"){
-      body.style.cssText = "padding: 10px 10px; overflow-y: hidden;"
+        setTimeout(function(){ 
+        body.style.cssText = "padding: 10px 10px; overflow-y: hidden;"
+        }, 1000);
       }
      
       thisID.setAttribute("view", "true") 
