@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - Cão Quente</title>
+    <link rel="stylesheet" href="all.css">
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+    ul li{
+        list-style: none;
+    }
+    body {
+        max-width: 500px;
+        margin: 0 auto;
+        box-shadow: 7px 0px 23px #ddd;
+        
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+    nav[view="false"],#cart[view="false"] {
+        display: none;
+    }
+    nav[view="true"],#cart[view="true"] {
+        display: block;
+    }
+    nav,div#cart{
+        background: #eee;
+        position: absolute;
+        z-index: 99;
+        left: 0;
+        width: 100%;
+        height: 96vh;
+        top: 0px;
+    }
+    nav ul li {
+    font-size: 25px;
+    font-family: sans-serif;
+    color: #8f8f8f;
+    margin: 25px;
+    }
+    p {
+        color: #737373;
+    }
+    main{
+        margin: 80px auto;
+    }
+    .product{
+        display: flex;
+        align-items: center;
+        position: relative;
+        transition: .3s;
+        border-bottom: 1px solid #e9e9e9;
+        padding-bottom: 15px;
+    }
+  
+    .product[slide="false"]{
+        left: 0px;
+    }
+    .product[slide="true"]{
+        left: -80px;
+    }
+    .product button {
+    background: #FF3D00;
+    height: 100px;
+    border: 0;
+    width: 100%;
+    color: white;
+    }
+   
+    #cart[itens="true"] span.cart_null {
+    display: none;
+    }
+    span.cart_null {
+    margin: 50% auto;
+    display: flex;
+    justify-content: center;
+    }
+    div#cart .itemProd{
+    padding: 20px 30px;
+    border-bottom: 1px solid #b3b3b3;
+    /* display: flex; */
+    align-items: center;
+    }
+    div#cart .nameProd {
+    margin-right: 15px;
+    width: 60%;
+    }
+@media (min-width:580px)  {
+
+        .search{
+            position: relative !important;
+            order: 2;
+
+        }   
+
+        .cart{
+            order: 3;
+        }
+    }
+</style>
+<body style="padding: 10px 10px ;overflow-y: auto; ">
+    <header style="display: flex;align-items: center;justify-content: space-between;">
+        <div>
+            <button style="background:transparent;border:0;" onclick="Menu()"><i class="fa-solid fa-bars"></i></button> 
+            <nav view="false">
+                <button style="float:right;margin:10px;cursor:pointer;background:transparent;border:0;" onclick="Menu()">x</button>
+                <ul>
+                    <li>Hot Dogs</li>
+                    <li>Hambúrguers</li>
+                    <li>Lanches Espiais</li>
+                    <li>Bebidas</li>
+                </ul>
+            </nav>
+       
+        </div>
+        <div id="Cart"  class="cart">
+            <button  style="background:transparent;border:0;" onclick="Cart()"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            <div id="cart" view="false">
+                <button style="float:right;margin:10px;cursor:pointer;" onclick="Cart()">x</button>
+            </div> 
+        </div>
+        
+         <div class="search" style="position: absolute;top: 30px;width: 80%;left: 0;margin: 0 7%;">
+             <input style="width: 100%;margin: 10px 0px;border: 1px solid #bfbdbd;padding: 10px 10px;border-radius: 25px;" type="text" placeholder="Buscar itens..">
+             <i style="position: absolute;right: 0;top: 21px; opacity: 0.3; cursor: pointer;" class="fa-solid fa-magnifying-glass"></i>
+         </div>
+    </header>
+    <main>
+        <div>
+            <h3>Hot Dogs</h3>
+        </div>
+      
+      <div>
+          
+          
+       
+
+        
+      </div>
+      
+      
+      
+      
+      <!-- hotdogs -->
+        <div   class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
+
+            
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Cão Quente</h4>
+                    <p>Purê de batatas, tomate, milho, batata palha, 2 salsichas, catupiry e cheddar.</p>
+                    <span>R$ 14,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+           </div>
+
+           <div class="product" slide="false" onClick="Slide(this)"> 
+                    <div>
+                        <h4 style=" text-transform: uppercase;">Hot Dog com Parmesão</h4>
+                        <p>Purê de batatas, tomate,  batata palha, salsicha, molho de tomate e queijo ralado.</p>
+                        <span>R$ 13,00</span> 
+                    </div>  
+                    <div style="position: relative;left: -10px;">   
+                        <img src="thumb.png" alt="">
+                    </div> 
+                    <div style="position: absolute;right: -80px;width: 80px;">  
+                        <button onclick="Cart(this)">Comprar</button>
+                    </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Hot Dog Misto</h4>
+                    <p>Purê de batatas, tomate, milho, batata palha, salsicha, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 17,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Big Hot Dog</h4>
+                    <p>Purê de batatas, tomate, milho, batata palha, triplo salsicha, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 19,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>  
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Hot Calabacon</h4>
+                    <p>Purê de batatas, tomate, milho, batata palha, salsicha, calabresa, bacon,  catupiry e cheddar.</p>
+                    <span>R$ 23,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+
+            
+        </div>
+        <!-- hambúrgues -->
+        <div hidden class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Hambúrguer</h4>
+                    <p>Purê de batatas, tomate, milho, batata palha, hambúrguer, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 16,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+           </div>
+
+           <div class="product" slide="false" onClick="Slide(this)"> 
+                    <div>
+                        <h4 style=" text-transform: uppercase;">X Burguer</h4>
+                        <p>Purê de batatas, batata palha, hambúrguer, queijo, catupiry e cheddar..</p>
+                        <span>R$ 18,00</span> 
+                    </div>  
+                    <div style="position: relative;left: -10px;">   
+                        <img src="thumb.png" alt="">
+                    </div> 
+                    <div style="position: absolute;right: -80px;width: 80px;">  
+                        <button onclick="Cart(this)">Comprar</button>
+                    </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">X Salada Hambúrguer Tradicional</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, hambúrguer, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 20,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">X Salada Tradicional</h4>
+                    <p>Purê de batatas, alface, tomate, hambúrguer, queijo.</p>
+                    <span>R$ 19,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>  
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">X Egg</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, hambúrguer, ovo, queijo, catupiry e cheddar.</p>
+                    <span>R$ 21,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">X Bacon</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, hambúrguer, bacon, queijo, catupiry e cheddar.</p>
+                    <span>R$ 23,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">X Frango</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, hambúrguer, filé de frango, queijo, catupiry e cheddar.</p>
+                    <span>R$ 23,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Americano</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, ovo, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 20,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Americano com Hambúrguer</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, hambúrguer, ovo, queijo, catupiry e cheddar.</p>
+                    <span>R$ 23,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Misto Quente</h4>
+                    <p>Purê de batatas, batata palha, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 16,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Bauru</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 18,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">X Churrasco</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, contra filé, queijo, catupiry e cheddar.</p>
+                    <span>R$ 26,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">X Tudo</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, hambúrguer, salsicha, ovo, bacon, contra filé, filé de frango, calabresa, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 51,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            
+            
+        </div>
+        <!-- Lanches Especiais -->
+        <div hidden class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Hambúrguer Gourmet com Bacon</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, hambúrguer, bacon, queijo, catupiry e cheddar.</p>
+                    <span>R$ 28,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+           </div>
+
+           <div class="product" slide="false" onClick="Slide(this)"> 
+                    <div>
+                        <h4 style=" text-transform: uppercase;">Hambúrguer Gourmet Pernil</h4>
+                        <p>Purê de batatas, alface, tomate, milho, batata palha, pernil desfiado, queijo, catupiry e cheddar.</p>
+                        <span>R$ 25,00</span> 
+                    </div>  
+                    <div style="position: relative;left: -10px;">   
+                        <img src="thumb.png" alt="">
+                    </div> 
+                    <div style="position: absolute;right: -80px;width: 80px;">  
+                        <button onclick="Cart(this)">Comprar</button>
+                    </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Contra Filé</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, contra filé, queijo, catupiry e cheddar.</p>
+                    <span>R$ 25,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">X Salada Especial Hambúrguer Gourmt</h4>
+                    <p>Purê de batatas, alface, tomate, milho, batata palha, hambúrguer, presunto, queijo, catupiry e cheddar.</p>
+                    <span>R$ 23,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            
+        </div>
+        <!-- Bebidas -->
+        <div hidden class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Aguá</h4>
+                    <span>R$ 3,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+           </div>
+
+           <div class="product" slide="false" onClick="Slide(this)"> 
+                    <div>
+                        <h4 style=" text-transform: uppercase;">Refrigerante Lata</h4>
+                        <span>R$ 6,00</span> 
+                    </div>  
+                    <div style="position: relative;left: -10px;">   
+                        <img src="thumb.png" alt="">
+                    </div> 
+                    <div style="position: absolute;right: -80px;width: 80px;">  
+                        <button onclick="Cart(this)">Comprar</button>
+                    </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Suco Natural 500ml</h4>
+                    <span>R$ 9,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Suco DEL Valle</h4>
+                    <span>R$ 7,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Caldo de Cana 500ml</h4>
+                    <span>R$ 8,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Caldo de Cana 500ml</h4>
+                    <span>R$ 8,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            
+        </div>
+        <!-- Adicionais -->
+        <div hidden class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Hambúrguer</h4>
+                    <span>R$ 5,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+           </div>
+
+           <div class="product" slide="false" onClick="Slide(this)"> 
+                    <div>
+                        <h4 style=" text-transform: uppercase;">Salsichas</h4>
+                        <span>R$ 5,00</span> 
+                    </div>  
+                    <div style="position: relative;left: -10px;">   
+                        <img src="thumb.png" alt="">
+                    </div> 
+                    <div style="position: absolute;right: -80px;width: 80px;">  
+                        <button onclick="Cart(this)">Comprar</button>
+                    </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Ovo</h4>
+                    <span>R$ 5,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+            
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Bacon</h4>
+                    <span>R$ 5,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+
+            <div class="product" slide="false" onClick="Slide(this)"> 
+                <div>
+                    <h4 style=" text-transform: uppercase;">Calabresa</h4>
+                    <span>R$ 8,00</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="thumb.png" alt="">
+                </div> 
+                <div style="position: absolute;right: -80px;width: 80px;">  
+                    <button onclick="Cart(this)">Comprar</button>
+                </div>  
+            </div>
+
+            
+            
+        </div>
+
+    </main>
+    <footer style="display: flex;justify-content: center; opacity: 0.6;  text-transform: uppercase;">
+        Restaurante Kão Kente
+    </footer>
+</body>
+<script src="all.js"></script>
+<script>
+    let a=1
+
+    products = [ {
+    "nome": "Cão Quente",
+    "desc": "Purê de batatas, tomate, milho, batata palha, 2 salsichas, catupiry e cheddar.", 
+    },
+    {
+    "nome": "Misto Quente",
+    "desc": "minivan",
+  },]
+
+
+  console.log(products)
+
+    function Menu(){
+        let nav = document.getElementsByTagName("Nav")[0] 
+        console.log(nav)
+
+        if(nav.getAttribute("view")=="false"){
+            nav.setAttribute("view", "true") 
+        }else{
+            nav.setAttribute("view", "false")  
+        }
+    }
+
+    function Cart(Prod){
+        let cart = document.getElementById("cart") 
+        let cesta=[];
+
+        if(Prod!=undefined){ // se clicar no produto
+
+            let cart = document.getElementById("cart")  
+            let itens = document.querySelectorAll(".itemProd")  
+
+            let nameProd=Prod.parentNode.parentNode.childNodes[1].childNodes[1].innerHTML
+            let descProd=Prod.parentNode.parentNode.childNodes[1].childNodes[3].innerHTML
+            let priceProd=Prod.parentNode.parentNode.childNodes[1].childNodes[5].innerHTML
+            let imageProd=Prod.parentNode.parentNode.childNodes[3].childNodes[1].innerHTML
+               
+        
+          
+            
+           cart.setAttribute("view", "true");cart.setAttribute("itens", "true");  
+           //imprime produto na cesta
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           console.log(cesta.length===0)
+           console.log(cesta.length)
+           console.log(cesta)
+           
+           
+           
+           cart.innerHTML+="<div class='itemProd'><div class='nameProd'>"+nameProd+"</div> <p>"+descProd+"</p><span>"+priceProd+"</span> <button style='float:right; ' onclick='removeProd(this)'>  Remover </button></div>"
+           
+            for (let index = 0; index < itens.length; index++) {
+                const element = itens[index];
+                let a= element.childNodes[0].innerHTML
+                cesta.push(a)
+                   
+       
+            }
+  
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+        }else{ //  botões
+            if(cart.getAttribute("view")=="false"){ cart.setAttribute("view", "true") }else{ cart.setAttribute("view", "false") }
+         
+            if(a==1){
+            cart.innerHTML+="<span class='cart_null'>Nenhum item na cesta</span>"
+            a=2
+            }
+
+        } 
+       
+    } 
+    
+
+    function removeProd(target){
+            console.log(target.parentNode)
+            target.parentNode.style.cssText="display:none;"
+    }
+
+    function Slide(prodThis ){ 
+         
+        if(prodThis.getAttribute("slide")=="false"){
+            prodThis.setAttribute("slide", "true")  
+        }else{
+            prodThis.setAttribute("slide", "false")  
+        }
+         
+    }
+</script>
+</html>

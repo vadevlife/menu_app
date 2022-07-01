@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - Cão Quente</title>
+    <link rel="shortcut icon" href="favico.png" type="image/x-icon">
+    <link rel="stylesheet" href="all.css">
+
+</head>
+
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+      ul li{
+          list-style: none;
+      }
+      body {
+          max-width: 500px;
+          margin: 0 auto;
+          box-shadow: 7px 0px 23px #ddd;
+          
+          font-family: 'Roboto Condensed', sans-serif;
+      }
+
+      .show {
+        display: block !important;
+
+      }
+      
+      nav[view="false"],#CartMenu[view="false"] {
+          display: none;
+      }
+      nav[view="true"],#CartMenu[view="true"] {
+          display: block;
+      }
+      nav,div#CartMenu{
+          background: #eee;
+          position: absolute;
+          z-index: 99;
+          left: 0;
+          width: 100%;
+          height: 96vh;
+          top: 0px;
+      }
+      nav ul li {
+      font-size: 25px;
+      font-family: sans-serif;
+      color: #8f8f8f;
+      margin: 25px;
+      }
+      p {
+        /* color: #c1c1c1; */
+          color: #737373;
+      }
+      main{
+          margin: 80px auto;
+      }
+      .product{
+          display: flex;
+          align-items: center;
+          position: relative;
+          transition: .3s;
+          border-bottom: 1px solid #e9e9e9;
+         
+      }
+    
+      .product[view="false"]{
+          left: 0px;
+      }
+      .product[view="true"]{
+          left: -80px;
+      }
+      .product button {
+      background: #FF3D00;
+      height: 100%;
+      border: 0;
+      width: 100%;
+      color: white;
+      }
+    
+      #cart[itens="true"] span.cart_null {
+      display: none;
+      }
+      span.cart_null {
+      margin: 50% auto;
+      display: flex;
+      justify-content: center;
+      }
+      div#cart .itemProd{
+      padding: 20px 30px;
+      border-bottom: 1px solid #b3b3b3;
+      /* display: flex; */
+      align-items: center;
+      }
+      div#cart .nameProd {
+      margin-right: 15px;
+      width: 60%;
+      }
+  @media (min-width:580px)  {
+
+          .search{
+              position: relative !important;
+              order: 2;
+
+          }   
+
+          .cart{
+              order: 3;
+          }
+      }
+
+
+      .itemProd {
+    margin: 30px 20px;
+    }
+    .nameProd {
+    font-weight: 900;
+    }
+    span {
+    font-weight: 900;
+    color: #FF5C00;
+    }
+  </style>
+<body style="padding: 10px 10px ;overflow-y: auto; ">
+
+    <header style="display: flex;align-items: center;justify-content: space-between;">
+        <div>
+            <button style="background:transparent;border:0;" onclick="toggle('nav')"><i class="fa-solid fa-bars"></i></button> 
+            <nav id="nav" view="false">
+                <button style="float:right;margin:10px;cursor:pointer;background:transparent;border:0;" onclick="Menu()">x</button>
+                <ul>
+                    <li>Hot Dogs</li>
+                    <li>Hambúrguers</li>
+                    <li>Lanches Espiais</li>
+                    <li>Bebidas</li>
+                </ul>
+            </nav>
+       
+        </div>
+
+        <div id="Cart"  class="cart">
+           
+            <div id="CartMenu" view="false"> 
+                Nenhuma produto na Cesta
+                <button id="CartToggle"style="background:transparent; float:right;z-index: 999;right: 5px;margin: 20px;" onclick="toggle('CartMenu')">
+                  <i class="fa-solid fa-cart-arrow-down"></i>
+              </button>
+            </div> 
+        </div>
+       
+        
+         <div class="search" style="position: absolute;top: 30px;width: 80%;left: 0;margin: 0 7%;">
+             <input style="width: 100%;margin: 10px 0px;border: 1px solid #bfbdbd;padding: 10px 10px;border-radius: 25px;" type="text" placeholder="Buscar itens..">
+             <i style="position: absolute;right: 0;top: 21px; opacity: 0.3; cursor: pointer;" class="fa-solid fa-magnifying-glass"></i>
+         </div>
+    </header>
+
+    <main > 
+     
+<style>
+  body {
+  margin-bottom: 60px;
+}
+
+.bgcolor {
+  background: #ccc;
+}
+
+.footer-toggle-show,
+.footer-toggle-hide {
+  border-bottom: 1px solid;
+  display: block;
+}
+.footer-details,
+.footer-toggle-hide,
+.footer-toggle-show:target {
+  display: none;
+}
+
+.footer-toggle-show:target + .footer-toggle-hide,
+.footer-toggle-show:target ~ .footer-details {
+  display: block;
+}
+
+.footer-toggle-show:after,
+.footer-toggle-hide:after {
+  float: right;
+  content: "+";
+}
+.footer-toggle-hide:after {
+  transform: rotate(45deg) scale(1.09);
+}
+</style>
+      <div class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
+        <div class='container'>
+          <div class='jumbotron text-center'>
+            <h1>CSS Collapse <i class="fa fa-check"></i></h1>
+            <p>Rodapé no estilo do site da <a href="https://apple.com" target="_blank">apple</a>, que usa um truque com checkbox para ter uma solução 100% CSS para mostrar ou recolher um menu, quando a tela tem pouca largura (como num celular). Aqui troquei o checkbox por divs e links.
+          </div>
+          <!-- jumbotron -->
+          
+          <hr />
+          
+         
+              <div>
+                <a id="show1" href="#show1" class="footer-toggle-show">Summary goes here 2</a>
+                <a id="hide1" href="#hide1" class="footer-toggle-hide">Summary goes here</a>
+                <div class="footer-details">
+                  Content goes here.
+                </div>
+              </div>
+              
+              <div>
+                <a id="show2" href="#show2" class="footer-toggle-show">Summary goes here</a>
+                <a id="hide2" href="#hide2" class="footer-toggle-hide">Summary goes here</a>
+                <div class="footer-details">
+                  Content goes here.
+                </div>
+              </div>
+        
+        </div>
+        <!-- container -->
+        <div id="products"></div> 
+       </div> 
+
+    </main>
+
+    <footer style="display: flex;justify-content: center; opacity: 0.6;  text-transform: uppercase;">
+        Restaurante Kão Kente
+    </footer>
+</body>
+<script src="all.js"></script>
+<script src="products.js"></script>
+<script src="teste.js"></script>
+<script> 
+console.log(allProds)
+
+
+Products = () => { 
+  var container=document.getElementById('products')
+
+  for (var i = 0; i < allProds.length; i++) { 
+
+      var catgs=  allProds[i].categoria 
+      const itemProd=allProds[i].itens 
+
+      for (var a = 0; a < itemProd.length; a++) {  
+        var itemProdId=itemProd[a].id
+        var itemProdName=itemProd[a].name
+        var itemProdDescription=itemProd[a].description
+        var itemProdPrice=itemProd[a].price
+        var itemProdImg=itemProd[a].img
+      }
+   
+      container.innerHTML+=` 
+      
+        <h3>   
+        `+catgs+`
+        </h3>  
+
+    
+
+
+       <div class="product" id=`+itemProdId+` onclick="toggle('`+itemProdId+`')" view="false">  
+            
+            <div style="padding: 10px 10px;">
+                    <h4 style="text-transform: uppercase;margin: 0;">`+itemProdName+`</h4>
+                    <p>`+itemProdDescription+`</p>
+                    <span>`+itemProdPrice+`</span> 
+                </div>  
+                <div style="position: relative;left: -10px;">   
+                    <img src="`+itemProdImg+`" alt="">
+                </div>
+                <div style="position: absolute;right: -80px;width: 80px;height: 100%;">  
+                    <button key=`+itemProdId+` class="cartBtn">Comprar</button> 
+                </div>  
+           </div> 
+       </div> 
+          
+      
+      `;
+  } 
+} 
+Products(); 
+ 
+
+var btn=document.querySelectorAll('.cartBtn')
+
+ for (var i = 0; i < btn.length; i++) { 
+    btn[i].addEventListener('click',function(){
+      let key=this.getAttribute('key')
+      listProd[key].quantidade++ 
+      Cart() 
+    })
+    
+    
+  }
+
+Cart = () =>{ 
+  var containerCart=document.getElementById('CartMenu') 
+
+  containerCart.innerHTML=``;
+
+  listProd.map((el)=>{  
+    if(el.quantidade > 0){ 
+        containerCart.innerHTML+=`
+            <div class="itemProd">
+                <div class="nameProd">`+el.name+`(`+el.quantidade+`)</div> 
+                <p>`+el.description+`</p>
+                <span>`+el.price+`</span>
+                <button style="float:right; " onclick="removeProd(this)">  Remover </button>
+            </div>  
+        `;
+        toggle('CartMenu')
+    }  
+  })
+  
+}
+
+toggle=(id)=>{ 
+
+  var thisID=document.getElementById(id) 
+
+  console.log(thisID.getAttributes)
+
+    if(thisID.getAttribute("view")=="false") {
+  
+      thisID.setAttribute("view", "true") 
+    } else { 
+        thisID.setAttribute("view", "false") 
+    }  
+}
+
+ 
+</script>
+</html>
