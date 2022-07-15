@@ -58,9 +58,8 @@
             border: 0;
             border-radius: 30px;
             padding: 0 15px;
-            opacity: 0.9;
-            text-transform:uppercase;
-            font-weight: 700;
+            opacity: 0.9; 
+            font-weight: 300;
             
 
         }
@@ -374,11 +373,7 @@
         pagination: {
         el: ".swiper-pagination",
         type: "fraction",
-      },
-    //   navigation: {
-    //     nextEl: ".swiper-button-next",
-    //     prevEl: ".swiper-button-prev",
-    //   },
+      } 
     });
   </script>
 <script src="all.js"></script>
@@ -397,7 +392,7 @@
     launcherID.innerHTML=input+button
 
     getName = () => {
-        var userName=document.getElementById('inputName').value
+          userName=document.getElementById('inputName').value
         
         if(userName.length>=2){
             Products(userName) 
@@ -472,19 +467,25 @@ Products = (userName) => {
   
 
 Cart = (status) =>{ 
-    containerCart=document.getElementById('CartMenu') 
- 
+
+  containerCart=document.getElementById('CartMenu')  
   containerCart.innerHTML=` <button style="background:transparent; float:right;z-index: 999;right: 5px;margin: 20px;" onclick="toggle('CartMenu')">  x </button>`;
+  var nitens=0
+  var total=0
 
   listProd.map((el)=>{  
     if(el.quantidade > 0){ 
+    
+        total2=total+=el.price*el.quantidade
         
-          n= el.name  
+        n= el.name  
+        quantProd=el.price*el.quantidade //Calcula a soma do mesmo item
+
         containerCart.innerHTML+=`  
             <div class="itemProd">
-                <div class="nameProd">`+el.name+` (`+el.quantidade+` Un.),(`+el.price+` Un.)</div> 
+                <div class="nameProd">`+el.quantidade+` `+el.name+` </div> 
                 <p>`+el.description+`</p>
-                <span>`+el.price+`</span>
+                <span>`+quantProd.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span>
                 <button  key=`+el.id+` style="float:right; " onclick="removeProd(this)">  Remover </button>
             </div>  
         `;
@@ -499,9 +500,13 @@ Cart = (status) =>{
         alert('Produto removido  ')
 
     } 
+
+    totalReal=total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+
+    
     // console.log( n )
 
-    containerCart.innerHTML+=`<button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #FF5C00;bottom: 25px;width: 230px;height: 45px;background: #FF5C00;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>
+    containerCart.innerHTML+=`<div style="font-size: 23px; display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: `+total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</div><button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #FF5C00;bottom: 25px;width: 230px;height: 45px;background: #FF5C00;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>
             
         `
 }
@@ -509,21 +514,18 @@ Cart = (status) =>{
 enviarPedido=()=>{ 
 
     var cesta=document.querySelectorAll("div#CartMenu .itemProd")
-   
-    // console.log(cesta )
-
+ 
     for (let index = 0; index < cesta.length; index++) {
         const element = cesta[index];
         name+=element.childNodes[1].innerHTML       
              
 
         msg="Meu pedido é:"+name+",  "
-    // console.log(element.childNodes[1] )
-    // console.log(element.childNodes[5] )
+ 
         
     }
     console.log(  msg  )
-    url="https://wa.me/+5512991597060?text="+msg+""
+    url="https://wa.me/+5512991597060?text=Olá meu nome é "+userName+": "+msg+"Total à pagar:"+totalReal;
     location.href = url
 
 }
