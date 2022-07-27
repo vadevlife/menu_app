@@ -3,32 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurante - Cão Quente</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Good Vibes - Adega Delivery</title>
     <link rel="shortcut icon" href="favico.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="all.css">
 
 </head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F72XNQT98R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-F72XNQT98R');
+</script>
   <style>
 
-      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
+      body{
+       font-family: 'Poppins', sans-serif !important;
+       margin: 0 auto !important;
+       padding: 10px 10px  !important; 
+       max-width: 600px;
+       font-family: 'Poppins', sans-serif; 
+       overflow: hidden;
+      }
+      button,a { font-size: 14px;} 
       ul li{
           list-style: none;
       }
       #launcher {
-            background-image: url(full.png);
+            /* background-image: url(full.png); */
+            background:black;
             width: 100%;
             height: 100vh;
             height: -webkit-fill-available;
-            position: fixed;
+            position: absolute;
             z-index: 999;
             top: 0;
             left: 0;
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap;  
             flex-wrap: wrap;
             background-repeat: no-repeat;
             background-size: cover;
@@ -40,8 +58,8 @@
             height: 110px;
             display: block;
             position: absolute;
+            right: -12px;
             top: 0;
-            right: 0;
             background-repeat: no-repeat;
             z-index: -1;
         }
@@ -49,68 +67,60 @@
             flex-wrap:wrap ;
         }
 
-        #launcher input{
-            width: 100%;
-            margin: 75px 20px;
+        #launcher input {
+            width: 70%;
+            margin: 5px 0;
             position: relative;
             top: 34%;
-            height: 45px;
+            height: 40px;
             border: 0;
             border-radius: 30px;
-            padding: 0 15px;
+            padding: 0px 20px;
             opacity: 0.9; 
-            font-weight: 300;
-            
-
+            font-weight:  300;
         }
         #launcher input:focus-visible {
             border: 0;
             box-shadow: inherit;
-            outline-color: #ff5702;
+            outline-color: #4ce29e;
         }
         :-webkit-input-placeholder { /* Edge */
-            color:#333;
-          font-family: 'Roboto Condensed', sans-serif;
+            color:#B0B0B0; 
+            font-family: 'Poppins', sans-serif;
           font-size: 14px;
 
             }
 
             :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color:#333;
-          font-family: 'Roboto Condensed', sans-serif;
+            color:#B0B0B0;
+          font-family: 'Poppins', sans-serif;
           font-size: 14px;
 
 
             }
 
             ::placeholder {
-            color:#333;
-          font-family: 'Roboto Condensed', sans-serif;
+            color:#B0B0B0;
+          font-family: 'Poppins', sans-serif;
           font-size: 14px;
 
 
             }
 
-        #launcher button{
+            #launcher button {
+              background: transparent;
+              border: 2px solid #46d995;
+              width: 200px;
+              color: #46d995;
+              border-radius: 30px;
+              height: 40px;
+              margin: 0 auto;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              margin: 10px auto;
+          }
 
-            background: transparent;
-            border: 2px solid white;
-            width: 200px;
-            color: white;
-            border-radius: 30px;
-            height: 40px;
-            margin: 0 auto;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-      body {
-          max-width: 500px;
-          margin: 0 auto;
-          box-shadow: 7px 0px 23px #ddd;
-          position: relative;
-          font-family: 'Roboto Condensed', sans-serif;
-      }
+    
 
       .show {
         display: block !important;
@@ -135,6 +145,10 @@
          transition: .3s;
 
       }
+      span {
+        font-weight: 900;
+        color: #46d995;
+    }
       nav,div#CartMenu{
           background: #eee;
           position: fixed;
@@ -145,6 +159,10 @@
           top: 0px;
           overflow-y: auto;
           height: -webkit-fill-available;
+      }
+      div#CartMenu{
+        height: 82vh !important;
+
       }
       nav ul li {
       font-size: 25px;
@@ -157,7 +175,7 @@
           color: #737373;
       }
       main{
-          margin:145px auto 15px;
+          margin:115px auto 15px;
       }
       .product{
           display: flex;
@@ -166,13 +184,26 @@
           transition: .3s;
           border-bottom: 1px solid #e9e9e9; 
            min-height: 115px;
-           justify-content: space-between;
+           justify-content: flex-start;
            padding: 10px 0;
+           background: #f1f1f1;
+    border-radius: 20px;
+    margin: 10px auto;
 
          
       }
+      .product h4 {
+        color: #424242;
+      }
+      .product span {
+        color: #6c6c6c;
+      }
+      .product img {
+          width: auto !important;
+          height: 130px;
+      }
       #products h3:after {
-        border-bottom: 2px solid #ff5c00;
+        border-bottom: 2px solid #4ce29e;
         display: block;
         content: "";
         position: relative;
@@ -180,10 +211,9 @@
         width: 54px;
         }
         .itens {
-            margin: 30px auto;
-            background: #f3f3f3;
-            padding: 15px;
-            border-radius: 20px;
+          margin: 30px auto;
+    padding: 0 15px 0px 0;
+    border-radius: 20px;
         }
     
       .product[view="false"]{
@@ -193,11 +223,12 @@
           left: -80px;
       }
       .product button {
-      background: #ff5c00;
+      background: #46d995;
       height: 100%;
       border: 0;
       width: 100%;
       color: white;
+      border-radius: 10px;
       }
     
       #cart[itens="true"] span.cart_null {
@@ -217,6 +248,23 @@
       div#cart .nameProd {
       margin-right: 15px;
       width: 60%;
+      }
+      span#qtd {
+          background: #46d995;
+          display: block;
+          width: 20px;
+          position: absolute;
+          right: 0;
+          height: 20px;
+          top: 3px;
+          border-radius: 20px;
+          color: white;
+          font-weight: 400;
+          padding: 1px;
+          display: flex;
+          justify-content: center;
+          font-size: 11px;
+          align-items: center;
       }
       .msg {
             position: absolute;
@@ -239,16 +287,28 @@
         }
       }
 
+      @media (max-height:410px)   {
+    .logo h1{
+        display: none;
+      }
 
-      .itemProd {
-    margin: 30px 20px;
+      }
+      @media (max-height:570px)   {
+      .delivery, .logo p{
+        display: none;
+      }
+
+      }
+      .itemProd {margin: 0;
+    border-bottom: 1px solid #d7d7d7;
+    padding: 22px;
     }
     .nameProd {
-    font-weight: 900;
+    font-weight:400;
     }
     span {
     font-weight: 900;
-    color: #FF5C00;
+    color: #46d995;
     }
 
     /* swipr */
@@ -265,110 +325,230 @@
     display: flex;
     justify-content: center;
     }
-    span#qtd {
-          background: #46d995;
-          display: block;
-          width: 20px;
-          position: absolute;
-          right: 0;
-          height: 20px;
-          top: 3px;
-          border-radius: 20px;
-          color: white;
-          font-weight: 400;
-          padding: 1px;
-          display: flex;
-          justify-content: center;
-          font-size: 11px;
-          align-items: center;
-      }
+    .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 157px;
+    left: 0;
+    width: 100%;
+}
+:root {
+    --swiper-theme-color: #4ce29e;
+}
+body[status="naologado"] #slider {
+    display: none;
+}
+body[status="logado"] #slider {
+    display: inherit;
+}
+
+header{
+  display: flex;align-items: center;margin: 0;
+
+}
+header button {
+  background:transparent;border:0;
+}
+label {
+  position: relative;  
+}
   </style>
-<body style="padding: 10px 10px ;overflow-y: auto; "> 
-    <header style="display: flex;align-items: center;justify-content: space-between;margin: 5px auto 0;">
+<body status="naologado"> 
+    <header>
         <div>
-            <button style="background:transparent;border:0;" onclick="toggle('CartMenu')"><i class="fa-solid fa-bars"></i></button> 
+         <!-- MENU PRINCIPAL -->  
+            <button onclick="toggle('CartMenu')">
+              <img style="width: 35px;box-shadow: 7px 8px 17px #dbdbdb;border-radius: 12px;" src="menu.png" alt="">
+            </button> 
+
             <nav id="nav" view="false">
                 <button style="float:right;margin:10px;cursor:pointer;background:transparent;border:0;" onclick="toggle('CartMenu')">x</button>
                 <ul>
-                    <li>Hot Dogs</li>
-                    <li>Hambúrguers</li>
-                    <li>Lanches Espiais</li>
-                    <li>Bebidas</li>
+                    <li>Cervejas</li>
+                    <li>Whisky</li>
+                    <li>Fardos</li>
+                    <li>Vinhos</li>
+                    <li>Gin</li>
+                    <li>Destilados</li>
                 </ul>
             </nav>
-            <span style="
-            position: relative;
-            left: 29%;
-            text-transform: uppercase;
-            font-weight: 200;
-            ">      
-            Restaurante Kão Kente
-            </span>
-        </div>
+        <!-- MENU PRINCIPAL --> 
 
+            <span style="position: relative;left: 29%; text-transform: uppercase;font-weight: 200;">   </span>    
+            
+        </div>
+        <!-- BOAS VINDAS -->
+        <div id="welcome">
+       
+        <!-- CARRINHO -->  
         <div id="Cart"  class="cart">
             <button id="CartToggle" style="background:transparent;border:0;z-index: 999;right: 5px;position: fixed;top: 0;padding: 16px;right: 0;" onclick="toggle('CartMenu')">
-                <i      style=" color: white;font-size: 15px;" class="fa-solid fa-cart-arrow-down"></i>
-            <span id="qtd" >0</span>
+                <!-- <i      style=" color: white;font-size: 15px;" class="fa-solid fa-cart-arrow-down"></i> -->
                 
-            </button>
-            
+                <img style="
+                width: 20px;
+            " src="cart.png" alt="">
+            <span id="qtd" >0</span>
+            </button> 
             <div id="CartMenu" view="false"> 
-                <button  style="background:transparent;  z-index: 999;left:5px;margin: 20px;" onclick="toggle('CartMenu')">
+                <button  style="background:transparent;z-index: 999;border: 1px solid #5a5a5a;left:5px;margin: 15px;border-radius: 20px;height: 25px;width: 25px;color: #5a5a5a;" onclick="toggle('CartMenu')">
                     x
                 </button>  
                 <div class="msg">
-                Nenhuma produto na Cesta 
+                Nenhum produto na Cesta 
                </div>   
             </div> 
         </div>
        
       
-         <div class="search" style="position: absolute;top: 30px;width: 80%;left: 0;margin: 15px 7%;">
-            <div style="
-            margin: 3px auto;
-            position: absolute;
-            display: flex;
-            align-items: center;
-            padding: 0px 14px;
-            " id="welcome">
-
-            <img src="mini-pluto.png" alt="">
-
-            </div> 
-                <input style="width: 100%;margin: 70px 0px;border: 0px solid #bfbdbd;padding: 13px 15px;border-radius: 25px;background: #F5F5F5;" type="text" placeholder="Buscar itens..">
-                <i style="position: absolute;right: -10px;top: 82px; opacity: 0.3; cursor: pointer;" class="fa-solid fa-magnifying-glass"></i>
-         </div>
-         
     </header>
-    
+    <div class="search" style="position: relative;top: 10px;width: 80%;left: 0;margin: 15px 7%;"  >
+       
+     <h6 style="
+     font-size: 26px;
+     width: 180px;
+     line-height: 1.1;
+     margin: 25px 0;
+ ">O que deseja pedir hoje?</h6> 
+ <label style="    position: absolute;
+ width: 100%;"> 
+  <input id="serchInput" style="width: 100%;margin: 0px;border: 0px solid #bfbdbd;padding:15px 0px 15px 35px;border-radius: 25px;background: #F5F5F5;" type="text" placeholder="Buscar itens..">
+      <i style="position: absolute;left: 15px;top: 15px;opacity: 0.3;cursor: pointer;" class="fa-solid fa-magnifying-glass"></i>
+  </label>
+          <ul id="searchResult"  style= "background: white;width: 100%;left: 0;position: fixed;z-index: 99;top: 219px;padding: 0px;" >
+          </ul> 
+      </div>
+    </div> 
+
+
     <main > 
-      <div id="launcher"></div>
+      <div id="launcher">
+
+        <div class="logo" style="    width: 100%;  position: absolute;   z-index: 99;      display: flex; flex-direction: column;  top: 30px;padding: 0 40px;">
+          <img src="goodvibes_adega.png" alt="" style="width: 60px;display: block;margin: 0 auto;position: relative;right: 33px;">
+          <h1 style="color: white;font-weight: 300;font-size: 36px;line-height: 1.3;">Adega Delivery </br>
+          <strong style="font-weight: 300;color: #4ce29e;text-transform: capitalize;">Good Vibes</br> online </strong></h1>
+          <p style="color: white;width: 160px;opacity: 0.8;font-weight: 300;">Entregamos em toda região central de Ubatuba.</p>
+          <img class="delivery" style="width: 70px;" src="delivery.png" alt="">
+        </div>
+
+        <style>
+               html,
+      body {
+        position: relative;
+        height: 100%;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+  
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+       
+      .swiper-slide img {
+        display: block;
+        width: 100%  !important;
+        height: 100%  !important;
+        object-fit: cover;
+      }
+    
+      div#slider .swiper-slide {
+        width: 80% !important; 
+      }
+
+    
+        </style>
+       
+        
+       
+         <div class="swiper containerMySwiper"  >
+            <div class="swiper-wrapper">
+              
+             
+              
+              <div class="swiper-slide">
+                <img  style="width: 226;"  src="ballantines.png" alt="" >
+              </div>
+           
+
+            </div>
+            <div class="swiper-pagination"></div>
+         </div>
+
+         
+       <div style="
+       position: relative;
+       z-index: 99999999;
+       left: 0;
+       width: 100%;
+   ">
+        <div class="inputs" style="
+        position: absolute;
+        z-index: 99;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        bottom: 40px;
+          ">  
+          <input id="inputName" type="text" placeholder="Nome">
+          <input id="inputEnd" type="text" placeholder="Digite seu endereço">
+          <button onclick=getData()>Iniciar</button>
+        </div>  
+         
+        </div>
+      </div>
          
       <div id="slider">
+
         <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
             <div class="swiper-wrapper" id="swiper-wrapper-437910353b76b2ec8" aria-live="polite">
-              <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 377px;">
-                <img src="iPhone 8 Plus - 1 (1).png" alt="">
+                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 377px;">
+                  <img src="blacklabel.png" alt=""> 
+                </div>
+                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 377px;">
+                  <img src="gin.png" alt="">  
+                </div> 
             </div>
-              <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 377px;">
-                <img src="iPhone 8 Plus - 1 (2).png" alt="">
-            </div>
-              
-            </div>
-             <div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal" hidden><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">9</span></div>
-          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>  
+            <div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal" hidden><span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">9</span></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>  
+        </div>
 
-      </div>
       <div class="itens" style="overflow-y: hidden;position: relative;overflow-x: hidden;">
-        <h2 class="title" style="
-        text-transform: uppercase;
-        display: block; 
+        <h4 class="title"style="
+        display: block;
         margin-bottom: 5px;
-
+        width: 211px;
+        font-size: 22px;
+        line-height: 1.3;
     ">
-            Cardápio
-        </h2>    
+          <strong style="
+          color: #46d995;
+      ">A Maneira mais</strong> rápida de comprar bebidas online.
+        </h4>    
         <p style="margin: 5px auto 40px;">Faça seu pedido! </p>
         <div id="products"></div> 
        </div> 
@@ -376,70 +556,157 @@
     </main>
 
     <footer style="display: flex;justify-content: center;opacity: 0.6;text-transform: uppercase;align-items: center;padding: 7px;flex-direction: column;">
-        Restaurante Kão Kente
+      Good Vibes - Adega Delivery
         <span><h6>Desenvolvido por : Digital Harmony</h6></span>
     </footer>
 </body>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-    var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30,
+    var swiper = new Swiper(".containerMySwiper", {
+        spaceBetween: 0,
         loop: true,
         autoplay: {
-            delay: 2500,
+            delay: 3500,
             disableOnInteraction: false,
         },
         pagination: {
-        el: ".swiper-pagination",
-        type: "fraction",
-      } 
+        el: ".swiper-pagination", 
+      },
+   
     });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
 <script src="all.js"></script>
 <script src="products.js"></script>
 <script src="teste.js"></script>
-<script> 
+
+<script>
+
+  search = ()=> {
+    
+    let  id = document.getElementById('search')  
+    let  serchInput = document.getElementById('serchInput')   
+    let  searchResult = document.getElementById('searchResult')   
+     
+    searchResult.innerHTML=""
+    
+
+    submitSearch=(event)=>{
+      let searched=event.target.value  
+      const productFound=ProductsFilter(searched)  
+     
+      productFound.length > 0 ? render(productFound) :  searchResult.innerHTML="Produto não encontrado"
+      searched.length=='' ? searchResult.innerHTML="" : ProductsFilter(searched)  
+    }
+
+    ProductsFilter=(searched)=>{
+        return listProd.filter(p=>{
+           return p.name.toLowerCase().includes(searched.toLowerCase())  
+        })  
+      }
+    serchInput.addEventListener('keyup', _.debounce(submitSearch, 500))
  
- Menu = () => {
-            
- }
- initApp = () => {
+
+    totalProducts=(listProd)=>{ 
+      console.log(listProd.length)
+    }
+    totalProducts(listProd)
+
+    function render(productFound){   
+      body.style.cssText="overflow: hidden";
+      serchInput.style.cssText+="display:block;"
+      searchResult.style.cssText+="height: 340px; overflow: hidden;overflow-y: auto;"
+      productFound.map((pr)=>{  
+            searchResult.innerHTML+=`
+                   <div class="product" id=`+pr.id+` onclick="toggle('`+pr.id+`')" view="false">   
+                    <div style="padding: 10px 10px;order: 2;width: 27%;">
+                            <h4 style="font-weight: 400;text-transform: uppercase;margin: 0;">`+pr.name+`</h4>
+                         
+                            <span  style="font-weight: 400;">`+pr.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span> 
+
+                        </div>  
+                        <button  style="order: 2;width: 20px;height: 20px;display: flex;justify-content: center;align-items: center;background: black;margin: 0 0px 0 43px;" class="">+</button> 
+
+                        <div style="margin: 0 25px; position: relative;order: 1;width: 23%;display: flex;justify-content: center;">   
+                            <img style="width: 120px;margin-left: 5px;" src="produtos/`+pr.img+`" alt="">
+                        </div>
+
+                        <div style="position: absolute;right: -106px;width: 96px;height: 100%;">  
+                            <button key=`+pr.id+` onclick="addProd(this)" class="cartBtn">Comprar</button> 
+                        </div>  
+                </div> 
+            </div>   
+            `;    
+        }) 
+   }
+   
+
+
+
+   
+
+  }
+  search()
+</script>
+<script> 
+   
+ var body=document.getElementsByTagName("body")[0]
+ 
+ initApp = () => { 
+
     var launcherID = document.getElementById('launcher')
     
     var input ="<input id=inputName type='text' placeholder='Digite seu nome aqui' required >"
-    var button ="<button onclick=getName()  type='button' placeholder='Digite seu nome aqui' required >Iniciar</button>" 
-    launcherID.innerHTML=input+button
+    var button ="<button onclick=getData()  type='button' placeholder='Digite seu nome aqui' required >Iniciar</button>" 
+    // launcherID.innerHTML=input+button
 
-    getName = () => {
+    getData = () => {
+
           userName=document.getElementById('inputName').value
-        
-        if(userName.length>=2){
-            Products(userName) 
+        userEnd=document.getElementById('inputEnd').value
+
+        body.style.cssText+="overflow-y: auto;"
+
+        if(userName.length>=2 & userEnd.length>=2){
+            Products(userName,userEnd) 
             
             setTimeout( 
                 launcherID.style.cssText="display:none;"
             , 1000);
         }else{
-            alert('Para começar preencha o campo')
+            alert('Para começar preencha os campos')
         }
     }
   
 }
  initApp()
 
-Products = (userName) => { 
+Products = (userName,userEnd) => { 
    
 
   var container=document.getElementById('products')
   var welcome=document.getElementById('welcome')
-  welcome.innerHTML+="<p style='  margin-top: 15px;  font-size: 16px;  color: black;  padding: 0 5  px;   display: block;   margin-left: auto;  margin-right: auto;'> Olá, <strong style='font-weight: 700;color: #ff5c00; letter-spacing: 1px;'>"+userName+"</strong> faça seu pedido.</p>"
 
+  welcome.style.cssText=`
+      margin:10px 0;  
+      display: flex; 
+      align-items: center; 
+      padding: 0px 35px;
+      
+  `;
+    
+
+  console.log(welcome)
+    welcome.innerHTML+="<div><p style='  margin: 0px auto 5px;  font-size: 15px;  color: #8C9099;  padding: 0 5px; white-space: nowrap;  display: block;   margin-left: auto;  margin-right: auto; line-height: 1.2;'> Olá, <strong style='font-weight: 700;color: #4BE8A0; letter-spacing: 1px;'>"+userName+"</strong> faça seu pedido.</p><p style='font-size: 12px;margin: 0 5px; line-height: 1.2; white-space: nowrap;'> <i class='fa-solid fa-location-dot' style=' margin: 0 4px 0 0;'></i>"+userEnd+"</p><div>" 
+    
+ 
+    body.setAttribute("status", "logado")
 
   allProds.map((el)=>{ 
       var ii=el.itens 
 
       
-      container.innerHTML+=`<h3>`+el.categoria+`</h3>`;
+      container.innerHTML+=`<h3 style="margin: 35px auto;">`+el.categoria+`</h3>`;
     
       for (var b = 0; b < ii.length; b++) { 
         var itemProdId=ii[b].id
@@ -450,16 +717,19 @@ Products = (userName) => {
  
         container.innerHTML+=`  
             <div class="product" id=`+itemProdId+` onclick="toggle('`+itemProdId+`')" view="false">   
-                    <div style="padding: 10px 10px;">
-                            <h4 style="text-transform: uppercase;margin: 0;">`+itemProdName+`</h4>
+                    <div style="padding: 10px 10px;order: 2;width: 27%;">
+                            <h4 style="font-weight: 400;text-transform: uppercase;margin: 0;">`+itemProdName+`</h4>
                             <p>`+itemProdDescription+`</p>
-                            <span>`+itemProdPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span> 
+                            <span  style="font-weight: 400;">`+itemProdPrice.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span> 
                         </div>  
-                        <div style="position: relative;left: -10px; ">   
-                            <img style="width: 100px;margin-left: 5px;" src="`+itemProdImg+`" alt="">
+                        <button  style="order: 2;width: 20px;height: 20px;display: flex;justify-content: center;align-items: center;background: black;margin: 0 0px 0 43px;" class="">+</button> 
+
+                        <div style="margin: 0 25px; position: relative;order: 1;width: 23%;display: flex;justify-content: center;">   
+                            <img style="width: 120px;margin-left: 5px;" src="`+itemProdImg+`" alt="">
                         </div>
+
                         <div style="position: absolute;right: -106px;width: 96px;height: 100%;">  
-                            <button key=`+itemProdId+` class="cartBtn">Comprar</button> 
+                            <button key=`+itemProdId+` onclick="addProd(this)" class="cartBtn">Comprar</button> 
                         </div>  
                 </div> 
             </div>   
@@ -467,89 +737,71 @@ Products = (userName) => {
         }
     }) 
 
-    var btn=document.querySelectorAll('.cartBtn')
+ 
+    addProd=(prodThis)=>{
 
- for (var i = 0; i < btn.length; i++) { 
-    btn[i].addEventListener('click',function(){
-      let key=this.getAttribute('key')
+      let key=prodThis.getAttribute('key')
       listProd[key].quantidade++ 
       Cart(true) 
-    }) 
+
+      
+    }
+
+    }
     
-  }
-} 
-
- 
-
-
-
-  
-
 Cart = (status) =>{ 
-
   containerCart=document.getElementById('CartMenu')  
   itensCesta=document.getElementById('qtd')  
-  
-  containerCart.innerHTML=` <button style="background:transparent; z-index: 999;left: 5px;margin: 20px;border:0" onclick="toggle('CartMenu')">  <i class="fa-solid fa-chevron-left"></i> </button>`;
+  containerCart.innerHTML=` <button style="   background:transparent; z-index: 999;left: 5px;margin: 20px;border:0" onclick="toggle('CartMenu')"> <i class="fa-solid fa-chevron-left"></i></button>`;
   var nitens=0
   var total=0
 
   listProd.map((el)=>{  
     if(el.quantidade > 0){ 
 
-        nitens2=nitens+=el.quantidade 
-        total2=total+=el.price*el.quantidade
-        
+     nitens2=nitens+=el.quantidade
+     total2=total+=el.price*el.quantidade 
+
+     quantProd=el.price*el.quantidade //Calcula a soma do mesmo item
+     itensCesta.innerHTML=nitens2 //Mostra quantidad
+       
         n=el.name  
-        quantProd=el.price*el.quantidade //Calcula a soma do mesmo item
-        itensCesta.innerHTML=nitens2 //Mostra quantidad
-
-
         containerCart.innerHTML+=`  
             <div class="itemProd">
                 <div class="nameProd">`+el.quantidade+` `+el.name+` </div> 
                 <p>`+el.description+`</p>
                 <span>`+quantProd.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span>
-                <button  key=`+el.id+` style="float:right; " onclick="removeProd(this)">  Remover </button>
+                <button  key=`+el.id+` style="float:right;position: absolute;right: 20px;" onclick="removeProd(this)">  Remover </button>
             </div>  
-        `;
-        // toggle('CartMenu')
-        
-    }  
+            
+        `;  
+    } else{
+       console.log(el.quantidade )
+      }  
    
   })
+
   if(status==true){ 
         alert('Produto adicionado ')
-    }else{
-        alert('Produto removido  ')
-
-    } 
-
-    totalReal=total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-
+  }else{
+      alert('Produto removido  ') 
+  } 
+    totalReal=total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) 
+    containerCart.innerHTML+=`<div style="   box-shadow: 0px -7px 12px #d9d9d9;position: fixed; bottom: 0; background: #ffffff; width: 100%; "><div style=" display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: `+total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</div ><button onclick="enviarPedido()" style="float: inherit;margin: 20px auto;border: 1px solid #46d995;bottom: 25px;width: 230px;height: 45px;background: #46d995;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button> </div>  `
     
-    // console.log( n )
-
-    containerCart.innerHTML+=`<div style="font-size: 23px; display: flex; justify-content: center; margin: 15px auto 0; color: #686868; ">Total da Compra: `+total2.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</div><button onclick="enviarPedido()" style="float: inherit;margin: 100px auto;border: 1px solid #FF5C00;bottom: 25px;width: 230px;height: 45px;background: #FF5C00;color: white;border-radius: 40px;display: flex;text-transform: uppercase;font-weight: 700;letter-spacing: 1px;align-items: center;justify-content: center;text-decoration: none;" onclick="removeProd(this)"><i style="margin-right: 5px;"  class="fa-brands fa-whatsapp"></i>        Enviar Pedido </button>
-            
-        `
 }
 
-enviarPedido=()=>{ 
-
+enviarPedido=()=>{  
     var cesta=document.querySelectorAll("div#CartMenu .itemProd")
- 
+    
     for (let index = 0; index < cesta.length; index++) {
         const element = cesta[index];
-        name+=element.childNodes[1].innerHTML       
-             
+        name+=element.childNodes[1].innerHTML      
 
-        msg="Meu pedido é:"+name+",  "
- 
-        
+        msg="("+name+")  " 
     }
     console.log(  msg  )
-    url="https://wa.me/+5512991597060?text=Olá meu nome é "+userName+": "+msg+"Total à pagar:"+totalReal;
+    url="https://wa.me/+5512996048083?text=Olá meu nome é "+userName+", endereço ("+userEnd+"), Pedido: "+msg+"Total à pagar:"+totalReal;
     location.href = url
 
 }
@@ -581,5 +833,24 @@ toggle=(id)=>{
 }
 
  
+</script>
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: "auto",
+        spaceBetween:10,
+        loop: true,
+        autoplay: {
+            delay: 1500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+  });
 </script>
 </html>
